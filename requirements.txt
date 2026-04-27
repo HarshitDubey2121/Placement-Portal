@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 Flask
 mysql-connector-python
 flask-bcrypt
 gunicorn
 reportlab
+=======
+Flask
+mysql-connector-python
+flask-bcrypt
+reportlab
+Werkzeug
+gunicorn
+>>>>>>> 5edb1852b551ad9fe461666fb654c5a98bc930f5
