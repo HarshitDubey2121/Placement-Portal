@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin - Companies</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+<h2 class="mb-4">All Companies</h2>
+
+<table class="table table-bordered table-hover shadow">
+
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Company Name</th>
+<th>Email</th>
+<th>Website</th>
+<th>Location</th>
+<th>Created At</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for c in data %}
+<tr>
+<td>{{ c.id }}</td>
+<td>{{ c.company_name }}</td>
+<td>{{ c.email }}</td>
+<td>{{ c.website }}</td>
+<td>{{ c.location }}</td>
+<td>{{ c.created_at }}</td>
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

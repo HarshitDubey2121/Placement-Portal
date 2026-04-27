@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<div class="container">
+<a class="navbar-brand fw-bold" href="/dashboard_student">🎓 Student Panel</a>
+
+<div>
+<a href="/dashboard_student" class="btn btn-outline-light me-2">Dashboard</a>
+<a href="/logout" class="btn btn-danger">Logout</a>
+</div>
+</div>
+</nav>
+
+<div class="container py-5">
+
+<div class="row justify-content-center">
+<div class="col-md-7">
+
+<div class="card shadow border-0 premium-card p-4">
+
+<h2 class="mb-4 fw-bold text-center">My Profile</h2>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Name</th>
+<td>{{ user.name }}</td>
+</tr>
+
+<tr>
+<th>Email</th>
+<td>{{ user.email }}</td>
+</tr>
+
+<tr>
+<th>Course</th>
+<td>{{ user.course }}</td>
+</tr>
+
+<tr>
+<th>Mobile</th>
+<td>{{ user.mobile }}</td>
+</tr>
+
+<tr>
+<th>Penalty Points</th>
+<td class="text-danger fw-bold">{{ user.penalty_points }}</td>
+</tr>
+
+<tr>
+<th>Warnings</th>
+<td class="text-warning fw-bold">{{ user.warning_count }}</td>
+</tr>
+
+<tr>
+<th>Status</th>
+<td>
+{% if user.is_blocked %}
+<span class="badge bg-danger">Blocked</span>
+{% else %}
+<span class="badge bg-success">Active</span>
+{% endif %}
+</td>
+</tr>
+
+</table>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

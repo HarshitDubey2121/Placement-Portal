@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Applications</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<div class="container">
+<a class="navbar-brand fw-bold" href="/dashboard_student">🎓 Student Panel</a>
+
+<div>
+<a href="/dashboard_student" class="btn btn-outline-light me-2">Dashboard</a>
+<a href="/logout" class="btn btn-danger">Logout</a>
+</div>
+</div>
+</nav>
+
+<div class="container py-5">
+
+<div class="card shadow border-0 premium-card p-4">
+
+<h2 class="mb-4 fw-bold">My Applications</h2>
+
+{% if apps %}
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Job Title</th>
+<th>Status</th>
+<th>Applied Date</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for app in apps %}
+<tr>
+<td>{{ app.id }}</td>
+<td>{{ app.title }}</td>
+<td>
+{% if app.status == 'Applied' %}
+<span class="badge bg-primary">Applied</span>
+
+{% elif app.status == 'Interview Scheduled' %}
+<span class="badge bg-warning text-dark">Interview Scheduled</span>
+
+{% elif app.status == 'Selected' %}
+<span class="badge bg-success">Selected</span>
+
+{% elif app.status == 'Rejected' %}
+<span class="badge bg-danger">Rejected</span>
+
+{% else %}
+<span class="badge bg-secondary">{{ app.status }}</span>
+{% endif %}
+</td>
+
+<td>{{ app.applied_at }}</td>
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+{% else %}
+
+<div class="alert alert-info">
+No applications found.
+</div>
+
+{% endif %}
+
+</div>
+</div>
+
+</body>
+</html>
